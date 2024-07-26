@@ -1,7 +1,6 @@
-// src/components/Step2IncomeExpenses.js
 import React, { useState, useContext } from 'react';
 import { FormContext } from '../context/FormContext';
-import { Trash2Icon } from 'lucide-react';
+import ExpenseTable from './ExpenseTable';
 
 const Step2IncomeExpenses = () => {
   const { formData, setFormData } = useContext(FormContext);
@@ -14,14 +13,6 @@ const Step2IncomeExpenses = () => {
       expenses: [...expenses, expense],
     });
     setExpense({ name: '', amount: '' });
-  };
-
-  const removeExpense = (index) => {
-    const updatedExpenses = expenses.filter((exp, i) => i !== index);
-    setFormData({
-      ...formData,
-      expenses: updatedExpenses,
-    });
   };
 
   return (
@@ -69,39 +60,7 @@ const Step2IncomeExpenses = () => {
             Add Expense
           </button>
         </div>
-        {expenses.length > 0 && (
-          <table className='min-w-full divide-y-2 divide-gray-200 bg-white text-sm'>
-            <thead>
-              <tr>
-                <th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
-                  Name
-                </th>
-                <th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
-                  Amount
-                </th>
-                <th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'></th>
-              </tr>
-            </thead>
-
-            <tbody className='divide-y divide-gray-200 text-center'>
-              {expenses.map((exp, index) => (
-                <tr key={index} className='odd:bg-gray-50'>
-                  <td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
-                    {exp.name}
-                  </td>
-                  <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
-                    {exp.amount}
-                  </td>
-                  <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
-                    <button onClick={() => removeExpense(index)}>
-                      <Trash2Icon size={20} />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+        {expenses.length > 0 && <ExpenseTable expenses={expenses} />}
       </form>
     </div>
   );

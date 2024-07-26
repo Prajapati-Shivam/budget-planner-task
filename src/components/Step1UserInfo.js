@@ -1,19 +1,11 @@
-// src/components/Step1UserInfo.js
 import React, { useContext } from 'react';
 import { FormContext } from '../context/FormContext';
+import { currencies } from '../constants/currency';
 
 const Step1UserInfo = () => {
   const { formData, setFormData } = useContext(FormContext);
   const { name, email, currency } = formData;
 
-  const currencies = [
-    { name: 'Indian Rupee', code: 'INR' },
-    { name: 'US Dollar', code: 'USD' },
-    { name: 'Euro', code: 'EUR' },
-    { name: 'British Pound', code: 'GBP' },
-    { name: 'Japanese Yen', code: 'JPY' },
-    { name: 'Chinese Yuan', code: 'CNY' },
-  ];
   return (
     <div>
       {/* TODO: Add a step component display step number */}

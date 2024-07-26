@@ -1,11 +1,12 @@
-// src/components/Step3BudgetSummary.js
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FormContext } from '../context/FormContext';
 import CurrencyConverter from './CurrencyConverter';
+import { currencies } from '../constants/currency';
 
 const Step3BudgetSummary = () => {
   const { formData } = useContext(FormContext);
   const { income, expenses, currency } = formData;
+  const [targetCurrency, setTargetCurrency] = useState(currency);
   const totalExpenses = expenses.reduce(
     (acc, curr) => acc + parseFloat(curr.amount),
     0
@@ -18,11 +19,26 @@ const Step3BudgetSummary = () => {
       <p>Total Income: {income}</p>
       <p>Total Expenses: {totalExpenses}</p>
       <p>Remaining Budget: {remainingBudget}</p>
-      <CurrencyConverter
-        baseCurrency={currency}
-        targetCurrency='USD'
-        amount={remainingBudget}
-      />
+      <div className='flex items-center gap-2'>
+        <CurrencyConverter
+          baseCurrency={currency}
+          targetCurrency={targetCurrency}
+          amount={remainingBudget}
+        />
+        <label className='block'>
+          <select
+            value={targetCurrency}
+            onChange={(e) => setTargetCurrency(e.target.value)}
+            className='block border border-gray-300 rounded-md'
+          >
+            {currencies.map((curr) => (
+              <option key={curr.code} value={curr.code}>
+                {curr.code}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
     </div>
   );
 };

@@ -19,8 +19,7 @@ const CurrencyConverter = ({ baseCurrency, targetCurrency, amount }) => {
   return (
     <div>
       <p>
-        {amount} {baseCurrency} is approximately {convertedAmount}{' '}
-        {targetCurrency}
+        {amount} {baseCurrency} = {convertedAmount}{' '}
       </p>
     </div>
   );
