@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FormContext } from '../context/FormContext';
 import { currencies } from '../constants/currency';
+import Step from './Step';
 
 const Step1UserInfo = () => {
   const { formData, setFormData } = useContext(FormContext);
@@ -8,8 +9,12 @@ const Step1UserInfo = () => {
 
   return (
     <div>
-      {/* TODO: Add a step component display step number */}
-      <h2 className='text-xl font-semibold mb-2'>User Information</h2>
+      <h2 className='text-xl font-semibold mb-6 flex items-center gap-x-2'>
+        <Step num='1' />
+        <span className='underline underline-offset-4 decoration-[#1b294b]'>
+          User Information
+        </span>
+      </h2>
       <form className='space-y-4'>
         <label className='block'>
           Name:

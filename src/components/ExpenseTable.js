@@ -12,7 +12,10 @@ const ExpenseTable = ({ expenses }) => {
     });
   };
   return (
-    <table className='min-w-full divide-y-2 divide-gray-200 bg-white text-sm'>
+    <table className='min-w-full divide-y-2 divide-gray-200 bg-white text-sm border-gray-300 border my-4'>
+      <caption className='text-lg font-medium text-gray-900 pb-2'>
+        Expenses List
+      </caption>
       <thead>
         <tr>
           <th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>

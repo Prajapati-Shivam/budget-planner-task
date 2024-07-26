@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { FormContext } from '../context/FormContext';
 import ExpenseTable from './ExpenseTable';
+import Step from './Step';
 
 const Step4ReviewSave = () => {
   const { formData } = useContext(FormContext);
@@ -25,15 +26,36 @@ const Step4ReviewSave = () => {
   };
   return (
     <div>
-      <h2 className='text-xl font-semibold mb-2'>Review and Save</h2>
-      <p>Name: {name}</p>
-      <p>Email: {email}</p>
-      <p>Preferred Currency: {currency}</p>
-      <p>Monthly Income: {income}</p>
-      <p>
-        Total Expenses:{' '}
-        {expenses.reduce((acc, curr) => acc + parseFloat(curr.amount), 0)}
-      </p>
+      <h2 className='text-xl font-semibold mb-6 flex items-center gap-x-2'>
+        <Step num='4' />
+        <span className='underline underline-offset-4 decoration-[#1b294b]'>
+          Review and Save
+        </span>
+      </h2>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+        <div className='flex items-center text-lg gap-2'>
+          <p className='font-semibold'>Name:</p>
+          <span>{name}</span>
+        </div>
+        <div className='flex items-center text-lg gap-2'>
+          <p className='font-semibold'>Email:</p>
+          <span>{email}</span>
+        </div>
+        <div className='flex items-center text-lg gap-2'>
+          <p className='font-semibold'>Currency:</p>
+          <span>{currency}</span>
+        </div>
+        <div className='flex items-center text-lg gap-2'>
+          <p className='font-semibold'>Monthly Income:</p>
+          <span>{income}</span>
+        </div>
+        <div className='flex items-center text-lg gap-2'>
+          <p className='font-semibold'>Total Expenses:</p>
+          <span>
+            {expenses.reduce((acc, curr) => acc + parseFloat(curr.amount), 0)}
+          </span>
+        </div>
+      </div>
       {expenses.length > 0 && <ExpenseTable expenses={expenses} />}
       <button
         onClick={saveData}

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { FormContext } from '../context/FormContext';
 import ExpenseTable from './ExpenseTable';
+import Step from './Step';
 
 const Step2IncomeExpenses = () => {
   const { formData, setFormData } = useContext(FormContext);
@@ -17,7 +18,12 @@ const Step2IncomeExpenses = () => {
 
   return (
     <div>
-      <h2 className='text-xl font-semibold mb-2'>Income and Expenses</h2>
+      <h2 className='text-xl font-semibold mb-6 flex items-center gap-x-2'>
+        <Step num='2' />
+        <span className='underline underline-offset-4 decoration-[#1b294b]'>
+          Income and Expenses
+        </span>
+      </h2>
       <form className='space-y-4'>
         <label className='block'>
           Monthly Income:
@@ -30,14 +36,14 @@ const Step2IncomeExpenses = () => {
             className='mt-1 block w-full border border-gray-300 rounded-md p-2'
           />
         </label>
-        <div className='space-y-4'>
+        <div className='flex flex-col sm:flex-row sm:items-center gap-4'>
           <label className='block'>
             Expense Name:
             <input
               type='text'
               value={expense.name}
               onChange={(e) => setExpense({ ...expense, name: e.target.value })}
-              className='mt-1 block w-full border border-gray-300 rounded-md p-2'
+              className='mt-1 flex-1 w-full border border-gray-300 rounded-md p-2'
             />
           </label>
           <label className='block'>
@@ -48,18 +54,18 @@ const Step2IncomeExpenses = () => {
               onChange={(e) =>
                 setExpense({ ...expense, amount: e.target.value })
               }
-              className='mt-1 block w-full border border-gray-300 rounded-md p-2'
+              className='mt-1 flex-1 w-full border border-gray-300 rounded-md p-2'
             />
           </label>
-          <button
-            type='button'
-            disabled={!expense.name || !expense.amount}
-            onClick={addExpense}
-            className='mt-2 px-4 py-2 bg-[#1b294b] text-white rounded-md'
-          >
-            Add Expense
-          </button>
         </div>
+        <button
+          type='button'
+          disabled={!expense.name || !expense.amount}
+          onClick={addExpense}
+          className='mt-2 px-3 py-1 bg-[#1b294b] mx-auto text-white rounded-full'
+        >
+          Add Expense
+        </button>
         {expenses.length > 0 && <ExpenseTable expenses={expenses} />}
       </form>
     </div>
