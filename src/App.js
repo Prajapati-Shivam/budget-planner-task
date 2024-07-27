@@ -1,13 +1,15 @@
 import React from 'react';
 import { FormProvider } from './context/FormContext';
 import MultiStepForm from './components/MultiStepForm';
+import { HandCoinsIcon } from 'lucide-react';
 
 const App = () => {
   return (
     <FormProvider>
       <div className='min-h-screen w-screen p-4 bg-yellow-200 text-[#1b294b] bg-[url(/public/background.png)] bg-contain sm:bg-cover bg-center'>
-        <h1 className='text-2xl sm:text-4xl font-bold mb-8 text-center'>
-          Budget Planner
+        <h1 className='text-2xl sm:text-4xl font-bold mb-8 justify-center flex items-center gap-2'>
+          <span>Budget Planner</span>
+          <HandCoinsIcon size={24} />
         </h1>
         <MultiStepForm />
         <p className='text-center text-sm mt-4 text-gray-700'>
