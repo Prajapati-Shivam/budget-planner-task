@@ -10,7 +10,7 @@ const CurrencyConverter = ({ baseCurrency, targetCurrency, amount }) => {
       );
       const data = await response.json();
       const rate = data.rates[targetCurrency];
-      setConvertedAmount(amount * rate);
+      setConvertedAmount(Math.round(amount * rate * 100) / 100);
     };
 
     fetchConversionRate();

@@ -62,7 +62,7 @@ const Step2IncomeExpenses = () => {
           type='button'
           disabled={!expense.name || !expense.amount}
           onClick={addExpense}
-          className='mt-2 px-3 py-1 bg-[#1b294b] mx-auto text-white rounded-full'
+          className='mt-2 px-3 py-1 bg-[#1b294b] mx-auto text-white rounded-full hover:bg-[#1b294b]/90 transition-color duration-300 ease-in-out cursor-pointer'
         >
           Add Expense
         </button>

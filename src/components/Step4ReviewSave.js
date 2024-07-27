@@ -57,18 +57,20 @@ const Step4ReviewSave = () => {
         </div>
       </div>
       {expenses.length > 0 && <ExpenseTable expenses={expenses} />}
-      <button
-        onClick={saveData}
-        className='mt-4 px-4 py-2 bg-green-500 text-white rounded-md'
-      >
-        Save
-      </button>
-      <button
-        onClick={clearData}
-        className='mt-4 px-4 py-2 bg-red-500 text-white rounded-md'
-      >
-        Clear Data
-      </button>
+      <div className='flex items-center gap-x-2 mt-4'>
+        <button
+          onClick={saveData}
+          className='px-3 py-1 bg-green-500 text-white rounded-full'
+        >
+          Save
+        </button>
+        <button
+          onClick={clearData}
+          className='px-3 py-1 bg-red-500 text-white rounded-full'
+        >
+          Clear Data
+        </button>
+      </div>
     </div>
   );
 };

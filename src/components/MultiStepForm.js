@@ -31,13 +31,13 @@ const MultiStepForm = () => {
   };
 
   return (
-    <div className='w-full max-w-lg mx-auto p-5 bg-white rounded-lg shadow-md border-dashed border-2 border-gray-500'>
+    <div className='w-full max-w-lg mx-auto p-5 bg-white/85 rounded-lg shadow-md border-dashed border-2 border-gray-500'>
       {renderStep()}
       <div className='mt-8 flex justify-between'>
         {step > 1 && (
           <button
             onClick={prevStep}
-            className='px-3 py-1 bg-gray-300 rounded-full'
+            className='px-3 py-1 bg-gray-300 rounded-full hover:bg-gray-400 transition-color duration-300 ease-in-out'
           >
             Previous
           </button>
@@ -45,7 +45,7 @@ const MultiStepForm = () => {
         {step < 4 && (
           <button
             onClick={nextStep}
-            className='px-3 py-1 bg-blue-500 text-white rounded-full'
+            className='px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-color duration-300 ease-in-out'
           >
             Next
           </button>
